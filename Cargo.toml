@@ -1,0 +1,7 @@
+[package]
+name = "mirth_engine_testing_tools"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = "0.18.1"
