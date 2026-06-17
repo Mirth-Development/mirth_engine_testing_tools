@@ -10,8 +10,9 @@
 /// are some words!" will be whatever color is associated with DEFAULT.
 pub struct TestColors;
 impl TestColors {
-    pub const DEFAULT:  &'static str = "\x1b[0m";  // \x1b[0m  == WHATEVER THE DEFAULT COLOR IS FOR THE TERMINAL
-    pub const FAIL:     &'static str = "\x1b[31m"; // \x1b[31m == RED TERMINAL TEXT
-    pub const PASS:     &'static str = "\x1b[32m"; // \x1b[32m == GREEN TERMINAL TEXT
-    pub const INFO:     &'static str = "\x1b[33m"; // \x1b[33m == YELLOW TERMINAL TEXT
+    pub const DEFAULT:  &'static str = "\x1b[0m";       // \x1b[0m  == WHATEVER THE DEFAULT COLOR IS FOR THE TERMINAL
+    pub const FAIL:     &'static str = "\x1b[31m";      // \x1b[31m == RED TERMINAL TEXT
+    pub const PASS:     &'static str = "\x1b[32m";      // \x1b[32m == GREEN TERMINAL TEXT
+    pub const INFO:     &'static str = "\x1b[33m";      // \x1b[33m == YELLOW TERMINAL TEXT
+    pub const WARNING:  &'static str = "\x1b[38;5;208m";// "\x1b[38;5;208m" == ORANGE TERMINAL TEXT
 }
