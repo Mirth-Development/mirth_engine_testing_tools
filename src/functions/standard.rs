@@ -1,4 +1,6 @@
 
+// Imports
+use std::fmt::{Debug, Display};
 use crate::TestColors;
 
 /// Used to determine if a test failed or passed based on the passed condition.
@@ -29,7 +31,7 @@ pub fn fail(statement_to_show_whats_being_tested: &str, failure_statement: &str)
 
 /// Checks if a value falls within the provided minimum and maximum range (inclusive).
 ///
-/// Accepts any type that implements [`PartialOrd`] and [`std::fmt::Display`], meaning
+/// Accepts any type that implements [`PartialOrd`] and [`Display`], meaning
 /// all numeric primitives, [`char`], [`String`], and [`&str`] are valid inputs.
 ///
 /// # Panics
@@ -40,7 +42,7 @@ pub fn fail(statement_to_show_whats_being_tested: &str, failure_statement: &str)
 /// check_value(5, 1, 10);    // Passes
 /// check_value(15, 1, 10);   // Panics
 /// ```
-pub fn check_if_value_is_within_range<T: PartialOrd + std::fmt::Display>(value: T, minimum: T, maximum: T) {
+pub fn check_if_value_is_within_range<T: PartialOrd + Display>(value: T, minimum: T, maximum: T) {
     assert!(
         value >= minimum && value <= maximum,
         "{}[FAIL]{} Value must be between {} and {} (inclusive). Got {}.",
@@ -51,7 +53,7 @@ pub fn check_if_value_is_within_range<T: PartialOrd + std::fmt::Display>(value: 
 
 /// Checks if a value is found within a slice of acceptable values.
 ///
-/// Accepts any type that implements [`PartialEq`], [`std::fmt::Display`], and [`std::fmt::Debug`],
+/// Accepts any type that implements [`PartialEq`], [`Display`], and [`Debug`],
 /// meaning all numeric primitives, [`char`], [`String`], and [`&str`] are valid inputs.
 ///
 /// # Panics
@@ -59,13 +61,13 @@ pub fn check_if_value_is_within_range<T: PartialOrd + std::fmt::Display>(value: 
 ///
 /// # Example
 /// ```
-/// check_if_value_is_acceptable(5, &[1, 3, 5, 7]);   // Passes
-/// check_if_value_is_acceptable(4, &[1, 3, 5, 7]);   // Panics
+/// check_if_value_is_a_member(5, &[1, 3, 5, 7]);   // Passes
+/// check_if_value_is_a_member(4, &[1, 3, 5, 7]);   // Panics
 ///
-/// check_if_value_is_acceptable("up", &["up", "down"]);   // Passes
-/// check_if_value_is_acceptable("left", &["up", "down"]); // Panics
+/// check_if_value_is_a_member("up", &["up", "down"]);   // Passes
+/// check_if_value_is_a_member("left", &["up", "down"]); // Panics
 /// ```
-pub fn check_if_value_is_acceptable<T: PartialEq + std::fmt::Debug + std::fmt::Display>(value: T, acceptable_values: &[T]) {
+pub fn check_if_value_is_a_member<T: PartialEq + Debug + Display>(value: T, acceptable_values: &[T]) {
     assert!(
         acceptable_values.contains(&value),
         "{}[FAIL]{} \"{}\" is not a valid value. Acceptable values are: {:?}.",

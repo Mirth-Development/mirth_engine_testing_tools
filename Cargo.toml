@@ -1,9 +1,9 @@
 [package]
 name = "mirth_engine_testing_tools"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2024"
 license = "Apache-2.0"
 description = "Libraries, types, and systems used to help facilitate testing packages and their offerings."
 
 [dependencies]
-bevy = "0.18.1"
+bevy = "0.19.0"
