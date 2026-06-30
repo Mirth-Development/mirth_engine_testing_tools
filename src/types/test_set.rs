@@ -1,5 +1,5 @@
 
-use bevy::prelude::*;
+use bevy_ecs::schedule::SystemSet;
 
 /// Used to tell Bevy on .add_systems() calls which tests to run first.  When used in conjunction
 /// with .chain().in_set(INSERT_ENUM_VALUE_HERE) on .add_systems() and with a followed .configure_sets()
